@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ship Your Agent — Build Your AI Agent Business for Under $50/Month</title>
+<meta name="description" content="The step-by-step playbook to build, deploy, and monetize your own AI agent on a budget. No Mac Mini. No coding degree. $29.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#f5f0e8;--cream2:#ece6db;--white:#fffcf7;
+  --navy:#0f1923;--navy2:#1a2836;
+  --ink:#1a1714;--ink2:#3d3832;--ink3:#7a7268;--ink4:#b5ad9e;
+  --orange:#e8612d;--orange-g:#e8612d40;--orange-dk:#c44f22;
+  --gold-pale:#f0e4c4;--gold:#c4982a;
+  --display:'Playfair Display',Georgia,serif;
+  --mono:'Space Mono',monospace;
+  --body:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+.cur{width:18px;height:18px;border:1.5px solid var(--orange);border-radius:50%;position:fixed;pointer-events:none;z-index:10000;transition:transform .15s,opacity .2s}.cur.h{transform:scale(2.5);opacity:.5}@media(hover:none){.cur{display:none}}
+
+/* NAV */
+.nv{position:fixed;top:0;width:100%;z-index:200;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .35s ease;backdrop-filter:blur(20px)}
+.nv--l{background:rgba(245,240,232,.92);border-bottom:1px solid rgba(0,0,0,.06)}
+.nv--d{background:rgba(15,25,35,.93);border-bottom:1px solid rgba(255,255,255,.05)}
+.nv--hide{opacity:0;pointer-events:none}
+.nl{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+.nv--l .nl{color:var(--ink)}.nv--d .nl{color:var(--cream)}
+.nl b{color:var(--orange)}
+.nb{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.5rem 1.2rem;border:1px solid var(--orange);color:var(--orange);transition:all .3s}
+.nb:hover{background:var(--orange);color:#fff;box-shadow:0 0 25px var(--orange-g)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 4.5rem;overflow:hidden;background:var(--navy)}
+.hero-gh{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:clamp(16rem,32vw,38rem);font-weight:900;color:rgba(255,255,255,.025);line-height:.8;white-space:nowrap;user-select:none;pointer-events:none}
+.hero-top{position:absolute;top:33%;left:3rem;transform:translateY(-50%)}
+.h-ov{font-family:var(--mono);font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;opacity:0;animation:si .8s ease forwards .3s}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(3.8rem,10.5vw,8.5rem);line-height:.88;color:var(--cream);opacity:0;animation:si .8s ease forwards .5s}
+.hero h1 .l2{display:block;font-style:italic;font-weight:400;color:var(--orange);margin-left:clamp(.5rem,4vw,3.5rem)}
+.hero-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.h-desc{max-width:370px;font-size:.95rem;font-weight:300;color:var(--ink4);line-height:1.75;opacity:0;animation:si .8s ease forwards .7s}
+.h-cta{opacity:0;animation:si .8s ease forwards .9s}
+.h-cta a{display:inline-flex;align-items:center;gap:.8rem;font-family:var(--body);font-weight:700;font-size:.95rem;color:#fff;background:var(--orange);padding:1rem 2.2rem;text-decoration:none;transition:all .35s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden}
+.h-cta a::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#fff3,transparent);transition:left .5s}
+.h-cta a:hover::after{left:100%}
+.h-cta a:hover{background:var(--orange-dk);transform:translateY(-2px);box-shadow:0 12px 45px var(--orange-g)}
+.h-cta .pr{font-family:var(--mono);font-size:.68rem;opacity:.6}
+
+/* MARQUEE */
+.mq{background:var(--orange);padding:.85rem 0;overflow:hidden;white-space:nowrap}
+.mq-in{display:inline-flex;gap:3rem;animation:ms 22s linear infinite;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.mq-in span::before{content:'◆';margin-right:3rem;opacity:.35}
+
+/* EDITORIAL SPLIT */
+.ed{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+.edg{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ed-l .bn{font-family:var(--display);font-size:7rem;font-weight:900;color:var(--gold-pale);line-height:.8;margin-bottom:1rem}
+.ed-l .st{font-family:var(--display);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.1}
+.ed-l .st em{font-style:italic;color:var(--orange)}
+.ed-r{padding-top:1.5rem}
+.ed-r p{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.85;margin-bottom:1.3rem}
+.ed-r p strong{font-weight:600;color:var(--ink)}
+
+/* FEATURES */
+.feat{padding:3rem 3rem 7rem;max-width:1200px;margin:0 auto}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.fi{padding:2.3rem;border:1px solid var(--cream2);position:relative;transition:all .4s;overflow:hidden}
+.fi::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--orange);transition:width .5s cubic-bezier(.23,1,.32,1)}
+.fi:hover::after{width:100%}
+.fi:hover{background:var(--white)}
+.fi .fn{font-family:var(--display);font-size:3.2rem;font-weight:900;color:var(--gold-pale);line-height:1;margin-bottom:.8rem;transition:color .3s}
+.fi:hover .fn{color:var(--orange)}
+.fi h3{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:.4rem}
+.fi p{font-size:.85rem;color:var(--ink3);line-height:1.7}
+
+/* HORIZONTAL CHAPTERS */
+.hz{padding:5.5rem 0 3.5rem;background:var(--navy);color:var(--cream);overflow:hidden}
+.hz-hd{padding:0 3rem 2.5rem;max-width:680px}
+.hz-lb{font-family:var(--mono);font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--orange);margin-bottom:.8rem}
+.hz-hd h2{font-family:var(--display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:400;line-height:1.1}
+.hz-hd h2 em{font-style:italic;color:var(--orange)}
+.hz-tr{display:flex;gap:1.3rem;padding:0 3rem 2.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.hz-tr::-webkit-scrollbar{display:none}
+.hz-c{flex:0 0 330px;scroll-snap-align:start;background:var(--navy2);border:1px solid rgba(255,255,255,.05);padding:2rem;transition:all .35s}
+.hz-c:hover{border-color:var(--orange);transform:translateY(-4px)}
+.hz-c .cn{font-family:var(--display);font-size:3.5rem;font-weight:900;color:var(--orange);opacity:.15;line-height:1;margin-bottom:.6rem}
+.hz-c h3{font-family:var(--display);font-weight:700;font-size:1.05rem;margin-bottom:.5rem}
+.hz-c p{font-size:.83rem;color:var(--ink4);line-height:1.75}
+.hz-ht{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);padding:0 3rem 3rem}
+.hz-ht span{display:inline-block;animation:nu 1.5s ease infinite}
+
+/* COMPARISON */
+.comp{padding:7rem 3rem;max-width:900px;margin:0 auto}
+.comp-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+.comp-h .st{font-family:var(--display);font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:700;line-height:1.1}
+.comp-h .st em{font-style:italic;color:var(--orange)}
+.comp-h .as{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.cr{display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid var(--cream2);transition:background .2s}
+.cr:hover{background:var(--white)}.cr.hd{border-bottom:2px solid var(--ink)}
+.cc{padding:.85rem 1.1rem;font-size:.85rem}
+.cr.hd .cc{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);padding-bottom:.7rem}
+.cc.o{color:var(--ink4);text-decoration:line-through;text-decoration-color:var(--cream2)}
+.cc.n{color:var(--orange-dk);font-weight:600}
+
+/* AUDIENCE */
+.aud{padding:5rem 3rem 7rem;max-width:1200px;margin:0 auto}
+.aud-hd{max-width:580px;margin-bottom:2.5rem}
+.aud-lb{font-family:var(--mono);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.aud-hd h2{font-family:var(--display);font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:700;line-height:1.1}
+.aud-hd h2 em{font-style:italic;color:var(--orange)}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.ac{padding:1.8rem;border:1px solid var(--cream2);transition:all .35s}
+.ac:nth-child(even){transform:translateY(1.8rem)}
+.ac:hover{border-color:var(--orange);background:var(--white)}
+.ac .aw{font-family:var(--display);font-size:1.8rem;color:var(--gold-pale);transition:color .3s;margin-bottom:.6rem}
+.ac:hover .aw{color:var(--orange)}
+.ac h3{font-family:var(--display);font-weight:700;font-size:.95rem;margin-bottom:.35rem}
+.ac p{font-size:.85rem;color:var(--ink3);line-height:1.7}
+
+/* FINAL CTA */
+.fin{background:var(--navy);color:var(--cream);padding:7rem 3rem;text-align:center;position:relative;overflow:hidden}
+.fin-gh{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:clamp(10rem,22vw,26rem);font-weight:900;color:rgba(255,255,255,.02);white-space:nowrap;pointer-events:none;user-select:none}
+.fin h2{font-family:var(--display);font-size:clamp(2.5rem,6.5vw,4.5rem);font-weight:400;line-height:1.02;margin-bottom:1.3rem;position:relative}
+.fin h2 em{font-style:italic;color:var(--orange)}
+.fin .sb{font-size:1.05rem;font-weight:300;color:var(--ink4);max-width:440px;margin:0 auto 2.5rem;line-height:1.7}
+.bb{display:inline-flex;align-items:center;gap:1rem;font-family:var(--body);font-weight:800;font-size:1.1rem;padding:1.1rem 2.8rem;background:var(--orange);color:#fff;text-decoration:none;transition:all .4s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden}
+.bb::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#fff3,transparent);transition:left .5s}
+.bb:hover::after{left:100%}
+.bb:hover{background:var(--orange-dk);transform:translateY(-3px) scale(1.02);box-shadow:0 14px 55px var(--orange-g)}
+.bb .p{font-family:var(--mono);font-size:.7rem;opacity:.55}
+.fin-n{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--ink3);margin-top:1.3rem}
+
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.04);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--ink3)}
+footer a{color:var(--ink4);text-decoration:none}footer a:hover{color:var(--orange)}
+
+.sr{opacity:0;transform:translateY(35px);transition:all .85s cubic-bezier(.23,1,.32,1)}.sr.v{opacity:1;transform:translateY(0)}
+.sd1{transition-delay:.08s}.sd2{transition-delay:.16s}.sd3{transition-delay:.24s}
+
+@keyframes si{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ms{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes nu{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+@media(max-width:900px){
+  .edg{grid-template-columns:1fr;gap:2rem}.fg{grid-template-columns:1fr}.ag{grid-template-columns:1fr}.ac:nth-child(even){transform:none}
+  .cr{grid-template-columns:1fr}.cr.hd{display:none}.cc::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.15rem}
+  .nv{padding:1rem 1.5rem}.hero{padding:0 1.5rem 3rem}.hero-top{left:1.5rem}
+  .ed,.feat,.comp,.aud{padding-left:1.5rem;padding-right:1.5rem}.hz-hd,.hz-ht{padding-left:1.5rem;padding-right:1.5rem}.hz-tr{padding-left:1.5rem}
+  .fin{padding:5rem 1.5rem}footer{flex-direction:column;gap:.4rem;text-align:center;padding:1.5rem}.ed-l .bn{font-size:4.5rem}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<nav class="nv nv--l" id="nL"><div class="nl"><b>Ship</b> Your Agent</div><a href="#buy" class="nb">$29 — Get the Guide</a></nav>
+<nav class="nv nv--d nv--hide" id="nD"><div class="nl"><b>Ship</b> Your Agent</div><a href="#buy" class="nb">$29 — Get the Guide</a></nav>
+
+<section class="hero" data-n="d"><div class="hero-gh">SYA</div><div class="hero-top"><div class="h-ov">A playbook for builders on a budget</div><h1>Ship Your<span class="l2">Agent</span></h1></div><div class="hero-bot"><p class="h-desc">The step-by-step playbook to build, deploy, and monetize your own AI agent for under $50/month. No Mac Mini. No coding degree. No waiting.</p><div class="h-cta"><a href="#buy">Get Instant Access <span class="pr">$29</span></a></div></div></section>
+
+<div class="mq" data-n="l"><div class="mq-in"><span>$8/mo server</span><span>13 scaffold files</span><span>4 phases to revenue</span><span>No Mac Mini needed</span><span>Telegram command center</span><span>Claude API backbone</span><span>Built-in security</span><span>Stripe-ready</span><span>$8/mo server</span><span>13 scaffold files</span><span>4 phases to revenue</span><span>No Mac Mini needed</span><span>Telegram command center</span><span>Claude API backbone</span><span>Built-in security</span><span>Stripe-ready</span></div></div>
+
+<section class="ed" data-n="l"><div class="edg"><div class="ed-l sr"><div class="bn">01</div><div class="st">Everyone's talking about AI agents.<br><em>Almost nobody ships.</em></div></div><div class="ed-r sr sd1"><p>The internet is drowning in AI agent content. Videos with millions of views. Twitter threads with thousands of likes. Everyone says it's the future.</p><p><strong>But look closer.</strong> Most people are stuck. The tutorials assume a Mac Mini ($800+). The communities are chaos. Discord threads disappear. Costs spiral without a plan.</p><p>We built an agent — from scratch, on an $8/month server — and documented every step, every file, every decision. <strong>This guide is that documentation.</strong></p></div></div></section>
+
+<section class="feat" data-n="l"><div class="fg"><div class="fi sr"><div class="fn">01</div><h3>The Mac Mini Myth</h3><p>Every guide assumes expensive hardware. Ours runs on an $8/month DigitalOcean VPS. Same results. 1% of the cost.</p></div><div class="fi sr sd1"><div class="fn">02</div><h3>Scattered Knowledge</h3><p>The real info lives in Discord threads and tweet replies that vanish. We consolidated everything into one complete system.</p></div><div class="fi sr sd2"><div class="fn">03</div><h3>The Cost Spiral</h3><p>API bills, hosting, tools — adds up fast. Our architecture keeps you under $50/month with exact budgets and daily caps.</p></div></div></section>
+
+<section class="hz" data-n="d"><div class="hz-hd sr"><div class="hz-lb">What's Inside</div><h2>Eight chapters.<br><em>Every file included.</em></h2></div><div class="hz-tr"><div class="hz-c"><div class="cn">01</div><h3>The Architecture</h3><p>4-phase blueprint from zero to revenue. Memory, communication, execution, scale — with decision matrices so your agent works without you.</p></div><div class="hz-c"><div class="cn">02</div><h3>Memory That Works</h3><p>3-layer system (PARA + QMD + tacit vault). All 13 scaffold files — daily notes, nightly consolidation, security rules, identity.</p></div><div class="hz-c"><div class="cn">03</div><h3>The $8 Server</h3><p>Full VPS walkthrough. Creating the droplet, securing SSH, installing dependencies. Copy-paste commands. Nothing to figure out.</p></div><div class="hz-c"><div class="cn">04</div><h3>Telegram HQ</h3><p>Threaded Telegram group as your command center. Channels for dev, marketing, products, support. Full bot code and heartbeat system.</p></div><div class="hz-c"><div class="cn">05</div><h3>The Brain</h3><p>Wire Claude's API as the reasoning engine. Per-thread memory, automatic updates, prompt injection detection. Your agent thinks.</p></div><div class="hz-c"><div class="cn">06</div><h3>Security</h3><p>Owner-only commands, data firewalls, spending caps. The one rule: Telegram = commands, everything else = information.</p></div><div class="hz-c"><div class="cn">07</div><h3>First Product</h3><p>You build, your agent sells. Deploy to Vercel, connect Stripe, hand over the keys. The split-strategy that keeps costs near zero.</p></div><div class="hz-c"><div class="cn">08</div><h3>Cost Playbook</h3><p>Monthly breakdowns, daily API caps, escalation strategy. Start at $20/month. Scale only when revenue says so.</p></div></div><div class="hz-ht"><span>→</span> Drag to explore all chapters</div></section>
+
+<section class="comp" data-n="l"><div class="comp-h sr"><div class="st">Their setup<br>vs. <em>yours.</em></div><div class="as">Real numbers. No fluff.</div></div><div class="cr hd"><div class="cc">Component</div><div class="cc">The "standard" way</div><div class="cc">Ship Your Agent</div></div><div class="cr sr"><div class="cc" data-l="Component">Hardware</div><div class="cc o" data-l="Standard">Mac Mini — $799+</div><div class="cc n" data-l="Ship Your Agent">VPS — $8/mo</div></div><div class="cr sr"><div class="cc" data-l="Component">AI backbone</div><div class="cc o" data-l="Standard">Claude Pro — $200/mo</div><div class="cc n" data-l="Ship Your Agent">Claude API — $10–30/mo</div></div><div class="cr sr"><div class="cc" data-l="Component">Setup time</div><div class="cc o" data-l="Standard">Days to weeks</div><div class="cc n" data-l="Ship Your Agent">Same afternoon</div></div><div class="cr sr"><div class="cc" data-l="Component">Codebase</div><div class="cc o" data-l="Standard">Trial and error</div><div class="cc n" data-l="Ship Your Agent">13 files. Ready.</div></div><div class="cr sr"><div class="cc" data-l="Component">Monthly total</div><div class="cc o" data-l="Standard">$200–400+</div><div class="cc n" data-l="Ship Your Agent">$20–50</div></div></section>
+
+<section class="aud" data-n="l"><div class="aud-hd sr"><div class="aud-lb">Who this is for</div><h2>Built for people<br>who <em>ship.</em></h2></div><div class="ag"><div class="ac sr"><div class="aw">↗</div><h3>You saw the hype and want in</h3><p>But every guide assumes Docker, SSH, and API fluency. This one starts from zero.</p></div><div class="ac sr sd1"><div class="aw">↗</div><h3>You want an AI employee</h3><p>Not a chatbot. Something that markets, tests, and operates while you sleep.</p></div><div class="ac sr sd2"><div class="aw">↗</div><h3>You don't have $800 for a Mac Mini</h3><p>Good. Neither did we. An $8 server does the same job — we proved it.</p></div><div class="ac sr sd3"><div class="aw">↗</div><h3>You got stuck setting up</h3><p>Memory, Telegram, deployment — every wall you hit is covered with the exact fix.</p></div></div></section>
+
+<section class="fin" id="buy" data-n="d"><div class="fin-gh">$29</div><h2>Stop scrolling.<br><em>Ship your agent.</em></h2><p class="sb">Everything you need — architecture, code, server setup, security, strategy — for the price of lunch.</p><a href="#" class="bb">Get Ship Your Agent <span class="p">$29</span></a><p class="fin-n">Instant PDF delivery · All 13 scaffold files · Lifetime updates</p></section>
+
+<footer><div>&copy; 2026 Ship Your Agent</div><div>Built by <a href="#">Gya</a></div><div>shipyouragent.com</div></footer>
+
+<script>
+const c=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{c.style.left=e.clientX-9+'px';c.style.top=e.clientY-9+'px'});
+document.querySelectorAll('a,button,.fi,.hz-c,.ac').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('h'));el.addEventListener('mouseleave',()=>c.classList.remove('h'))});
+const nL=document.getElementById('nL'),nD=document.getElementById('nD'),secs=document.querySelectorAll('[data-n]');
+function uNav(){const y=window.scrollY+60;let d=false;secs.forEach(s=>{const t=s.offsetTop,b=t+s.offsetHeight;if(y>=t&&y<b&&s.dataset.n==='d')d=true});if(d){nL.classList.add('nv--hide');nD.classList.remove('nv--hide')}else{nD.classList.add('nv--hide');nL.classList.remove('nv--hide')}}
+window.addEventListener('scroll',uNav);uNav();
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
